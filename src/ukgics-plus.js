@@ -72,10 +72,17 @@ function icsBuilder() {
                 // Two-hour reminder
                 "BEGIN:VALARM",
                 "ACTION:DISPLAY",
-                `DESCRIPTION:${escapeICS(summary)}`,
-                `TRIGGER:-PT${CONFIG.reminderMinutes}M`,
+                `DESCRIPTION:${escapeICS(summary)} - 2 hours`,
+                `TRIGGER:-PT120M`,
                 "END:VALARM",
-
+                
+                // 15-minute reminder
+                "BEGIN:VALARM",
+                "ACTION:DISPLAY",
+                `DESCRIPTION:${escapeICS(summary)} - 15 minutes`,
+                "TRIGGER:-PT15M",
+                "END:VALARM",
+                
                 "END:VEVENT"
             ].join("\r\n");
 
